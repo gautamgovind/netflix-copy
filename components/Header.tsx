@@ -1,10 +1,12 @@
 import { BellIcon, FilmIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import useAuth from '../hooks/useAuth';
 
 function Header() {
 
     const [isScrolled, setIsScrolled] = useState(false);
+    const { logout } = useAuth();
 
     useEffect(()=>{
         const handleScroll = () =>{
@@ -41,14 +43,15 @@ function Header() {
             <FilmIcon className='hidden sm:inline h-6 w-6' />
             <p className='hidden lg:inline'>Kids</p>
             <BellIcon  className='sm:inline h-6 w-6' />
-            <Link href="/account">
+            {/* <Link href="/account"> */}
                 <img src='https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png'
                     alt=''
                     width={30}
                     height={30}
                     className="cursor-pointer rounded"
+                    onClick={logout}
                 />
-            </Link>
+            {/* </Link> */}
         </div>
     </header>
   )
